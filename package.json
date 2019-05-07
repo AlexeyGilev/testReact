@@ -11,7 +11,8 @@
     "react-native": "0.59.3",
     "react-native-picker": "^4.3.7",
     "react-native-picker-select": "^6.1.0",
-    "react-native-shapes": "^0.1.0"
+    "react-native-shapes": "^0.1.0",
+    "react-native-table-component": "^1.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.4.0",
