@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, ScrollView, View, FlatList, StyleSheet } from 'react-native';
+import { Text, ScrollView, View, FlatList, StyleSheet, SectionList } from 'react-native';
 import Picker from 'react-native-picker';
 export default class App extends React.Component{
     constructor(props){
@@ -9,9 +9,9 @@ export default class App extends React.Component{
         Picker.show();
         return(
           <View style={styles.container}>
-              <FlatList
-              data = {
-                             [
+              <SectionList
+              sections = {[
+                                 {title: 'Секция 1', data: [
                                  {
                                      "name": "Proxima Midnight",
                                      "email": "proxima@appdividend.com"
@@ -23,7 +23,8 @@ export default class App extends React.Component{
                                  {
                                      "name": "Black Dwarf",
                                      "email": "dwarf@appdividend.com"
-                                 },
+                                 }]},
+                                 { title: 'Секция 2', data: [
                                  {
                                      "name": "Mad Titan",
                                      "email": "thanos@appdividend.com"
@@ -39,7 +40,8 @@ export default class App extends React.Component{
                                  {
                                      "name": "corvus",
                                      "email": "corvus@appdividend.com"
-                                 },
+                                 }]},
+                                 {title: 'Секция 3', data: [
                                  {
                                      "name": "Proxima Midnight",
                                      "email": "proxima1@appdividend.com"
@@ -67,7 +69,7 @@ export default class App extends React.Component{
                                  {
                                      "name": "corvus",
                                      "email": "corvus1@appdividend.com"
-                                 }
+                                 }]}
                              ]
                      }
               showsVerticalScrollIndicator={false}
@@ -79,6 +81,9 @@ export default class App extends React.Component{
                 <Text style={styles.email}>Содержание: без содержания</Text>
               </View>
               }
+               renderSectionHeader={({section: {title}}) => (
+                 <Text style={styles.section}>{title}</Text>
+               )}
               keyExtractor={item => item.email}
             />
           </View>
@@ -91,9 +96,8 @@ export default class App extends React.Component{
       container: {
         flex: 1,
         marginTop: 10,
-        marginLeft: 20,
-        justifyContent: 'center',
-        alignItems: 'flex-start',
+        justifyContent: 'space-evenly',
+        alignItems: 'stretch',
         backgroundColor: '#F5FCFF',
       },
       h2text: {
@@ -109,12 +113,18 @@ export default class App extends React.Component{
         borderColor: 'black',
       },
       name: {
+        marginLeft: 10,
         fontFamily: 'Verdana',
         fontSize: 20,
         color: 'black'
       },
       email: {
+        marginLeft: 30,
         color: 'gray'
+      },
+      section: {
+        backgroundColor: 'green',
+        fontSize: 18,
       }
 
     });
